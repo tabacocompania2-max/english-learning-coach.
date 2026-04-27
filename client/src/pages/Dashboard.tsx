@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Book, Flame, Clock, Target, Download } from 'lucide-react';
 import { StatsCard } from '../components/dashboard/StatsCard';
@@ -29,13 +29,15 @@ export const Dashboard = () => {
           'Content-Type': 'application/json'
         };
 
+        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+
         const [sRes, wRes, cRes, lRes, aRes, pRes] = await Promise.all([
-          fetch('http://localhost:3000/api/user/stats', { headers }),
-          fetch('http://localhost:3000/api/analytics/weekly', { headers }),
-          fetch('http://localhost:3000/api/analytics/categories', { headers }),
-          fetch('http://localhost:3000/api/lessons/history?limit=5', { headers }),
-          fetch('http://localhost:3000/api/user/achievements', { headers }),
-          fetch('http://localhost:3000/api/analytics/pronunciation', { headers })
+          fetch(`${apiUrl}/api/user/stats`, { headers }),
+          fetch(`${apiUrl}/api/analytics/weekly`, { headers }),
+          fetch(`${apiUrl}/api/analytics/categories`, { headers }),
+          fetch(`${apiUrl}/api/lessons/history?limit=5`, { headers }),
+          fetch(`${apiUrl}/api/user/achievements`, { headers }),
+          fetch(`${apiUrl}/api/analytics/pronunciation`, { headers })
         ]);
 
         const [sData, wData, cData, lData, aData, pData] = await Promise.all([

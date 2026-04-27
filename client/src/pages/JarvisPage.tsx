@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Mic, MicOff, Volume2, Sparkles, Settings } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Mic, MicOff, Volume2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSpeech } from '../hooks/useSpeech';
 
